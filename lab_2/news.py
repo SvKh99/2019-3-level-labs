@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import json
 import datetime
 from flask import Flask
-from flask import render_template
+from flask import render_template, redirect, url_for
 
 
 def get_response(url):
@@ -51,6 +51,9 @@ def get_news():
 
     return render_template('news_page.html', url=url, date=today, articles=articles)
 
+@app.route('/refresh')
+def refresh():
+    return redirect(url_for('get_news'))
 
 @app.route('/saved_news/')
 def get_saved_news():
