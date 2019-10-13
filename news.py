@@ -51,13 +51,10 @@ def get_news():
 
     return render_template('news_page.html', url=url, date=today, articles=articles)
 
+
 @app.route('/refresh')
 def refresh():
     return redirect(url_for('get_news'))
-
-@app.route('/saved_news/')
-def get_saved_news():
-    return render_template('Yandex.News.html')
 
 
 if __name__ == '__main__':
